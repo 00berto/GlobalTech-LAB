@@ -1,0 +1,27 @@
+======================================================================
+GLOBALTECH SOLUTIONS S.L. - POLÍTICA DE SEGURIDAD DE LA INFORMACIÓN
+======================================================================
+Clasificación del Documento: Uso Interno / Confidencial
+
+Este documento establece las normas de obligado cumplimiento para
+garantizar la integridad, disponibilidad y confidencialidad de los
+activos digitales de GlobalTech Solutions S.L.
+
+1. Controles de Acceso Físico y Lógico:
+   - Queda estrictamente prohibido compartir credenciales corporativas o
+     dejarlas expuestas en entornos desatendidos.
+   - El uso de privilegios elevados (root/administrator) debe limitarse
+     exclusivamente a tareas de mantenimiento crítico debidamente justificadas.
+
+2. Gestión de Vulnerabilidades y Actualizaciones:
+   - Todo servidor alojado en la DMZ debe contar con políticas de
+     bastionado (hardening) activas y parches de seguridad al día.
+   - Las aplicaciones web internas se auditarán bajo el marco metodológico
+     OWASP para mitigar riesgos de inyección y fallos de control de acceso.
+
+3. Auditoría y Registro (Logs):
+   - Todas las interacciones críticas con el sistema de archivos y las
+     bases de datos serán monitorizadas y correlacionadas centralizadamente.
+
+"La seguridad no es un producto, es un proceso continuo."
+======================================================================

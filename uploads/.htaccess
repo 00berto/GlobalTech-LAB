@@ -1,0 +1,7 @@
+<FilesMatch "\.(php|php5|phtml|php7|phps)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+php_admin_flag engine off
+RemoveHandler .php
+Options -ExecCGI

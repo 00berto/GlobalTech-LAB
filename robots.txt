@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /config.php
+Disallow: /rrhh.php
+Disallow: /documentos.php
+

@@ -1,0 +1,18 @@
+======================================================================
+GLOBALTECH SOLUTIONS S.L. - MANUAL DE BIENVENIDA INTERNO
+======================================================================
+¡Te damos una cordial bienvenida a nuestro equipo profesional!
+
+Este repositorio documental centralizado tiene como objetivo facilitar
+el acceso seguro a los procedimientos operativos de la organización.
+
+Directrices clave para nuevos empleados:
+1. El uso de credenciales corporativas es estrictamente personal e
+   intransferible.
+2. Todo acceso a recursos críticos desde redes externas requiere
+   la activación previa de la VPN perimetral corporativa.
+3. Cualquier anomalía detectada en los portales internos debe ser
+   notificada de inmediato al departamento de Soporte Técnico IT.
+
+"Impulsando la transformación digital con confianza y seguridad."
+======================================================================
