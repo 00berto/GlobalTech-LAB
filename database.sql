@@ -1,37 +1,35 @@
+-- Creación de la Base de Datos del Laboratorio
 CREATE DATABASE IF NOT EXISTS globaltech_db;
 USE globaltech_db;
 
--- Tabla de empleados y credenciales
+-- 1. Estructura de la tabla de Usuarios (Según Captura 5 del TFG)
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    password VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
     nombre VARCHAR(100) NOT NULL,
-    rol VARCHAR(20) NOT NULL,
-    puesto VARCHAR(50),
-    email VARCHAR(100)
+    rol VARCHAR(50) NOT NULL,
+    puesto VARCHAR(100) NOT NULL
 );
 
--- Tabla de nominas
+-- 2. Estructura de la tabla de Nóminas (Según Capítulos 4.2 y 4.3 del TFG)
 CREATE TABLE IF NOT EXISTS nominas (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT,
-    mes VARCHAR(20),
-    salario_base DECIMAL(10,2),
-    retencion DECIMAL(5,2),
-    archivo_pdf VARCHAR(100),
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+    usuario_id INT NOT NULL,
+    mes VARCHAR(30) NOT NULL,
+    salario_base DECIMAL(10,2) NOT NULL,
+    retencion DECIMAL(5,2) NOT NULL,
+    archivo_pdf VARCHAR(100) NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
--- Insertamos la jerarquia con correos incluidos
-INSERT INTO usuarios (username, password, nombre, rol, puesto, email) VALUES 
-('carlos.ceo', 'CEO_SecurePass2026!', 'Carlos Mendoza', 'admin', 'Director General (CEO)', 'cmendoza@globaltech.com'),
-('asanz', 'temporal2026', 'Ana Sanz', 'empleado', 'Soporte Tecnico IT', 'asanz@globaltech.com'),
-('mrossi', '123456', 'Marta Rossi', 'empleado', 'RRHH', 'mrossi@globaltech.com'),
-('jmartinez', 'passw0rd', 'Juan Martinez', 'empleado', 'Marketing', 'jmartinez@globaltech.com');
+-- 3. Inserción de Datos Limpios para el Escenario de Pruebas (Según Captura 5 del TFG)
+INSERT INTO usuarios (id, username, password, nombre, rol, puesto) VALUES
+(1, 'carlos.ceo', 'CorpPass2026', 'Carlos Mendoza', 'CEO', 'Director General (CEO)'),
+(2, 'asanz', 'SoportePass2026', 'Ana Sanz', 'Soporte', 'Soporte Tecnico IT'),
+(3, 'mrossi', '123456', 'Marta Rossi', 'RRHH', 'RRHH'),
+(4, 'jmartinez', 'MktPass2026', 'Juan Martinez', 'Marketing', 'Marketing');
 
-INSERT INTO nominas (usuario_id, mes, salario_base, retencion, archivo_pdf) VALUES 
-(1, 'Junio 2026', 8500.00, 24.50, 'nomina_ceo_junio.pdf'),
-(2, 'Junio 2026', 1800.00, 12.00, 'nomina_asanz_junio.pdf'),
-(3, 'Junio 2026', 2100.00, 14.50, 'nomina_mrossi_junio.pdf'),
-(4, 'Junio 2026', 1900.00, 13.75, 'nomina_jmartinez_junio.pdf');
+-- Inserción de la nómina de Marta Rossi (ID = 3) para la explotación de IDOR/BOLA (Según Captura 5 y 13)
+INSERT INTO nominas (id, usuario_id, mes, salario_base, retencion, archivo_pdf) VALUES
+(3, 3, 'Junio 2026', 2100.00, 14.50, 'nomina_mrossi_junio.pdf');
